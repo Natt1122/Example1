@@ -1,0 +1,81 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "35105dda-16f1-4f07-92c9-4f5c323901fe",
+    "name": "MedussaSWO",
+    "friendlyName": "Medusa DAST",
+    "description": "Allow scan your website to try find out a common vulnerabilities.",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Daniel Vargas Romero",
+    "version": {
+        "Major": 3,
+        "Minor": 0,
+        "Patch": 49
+    },
+    "instanceNameFormat": "Scan Site",
+    "groups": [{
+        "name":"authentication",
+        "displayName": "Authentication Variables",
+        "isExpanded": true
+    }],
+    "inputs": [
+        {
+            "name": "targeturl",
+            "type": "string",
+            "label": "Application URL",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "The application URL to use for Scan and discover security issues."
+        },
+        {
+            "name": "projectname",
+            "type": "string",
+            "label": "Project Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "The Service Scan URL V8"
+        },
+        {
+            "name": "username",
+            "type": "string",
+            "label": "UserName Variable",
+            "defaultValue": "",
+            "groupName": "authentication",
+            "required": false,
+            "helpMarkDown": "The username to use for try authenticated the application"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "label": "Password Variable",
+            "defaultValue": "",
+            "groupName": "authentication",
+            "required": false,
+            "helpMarkDown": "The username to use for try authenticated the application"
+        }
+        ,
+        {
+            "name": "loginurl",
+            "type": "string",
+            "label": "Login Url",
+            "defaultValue": "",
+            "groupName": "authentication",
+            "required": false,
+            "helpMarkDown": "The url to will be use for login process"
+        }
+    ],
+    "sourceDefinitions": [
+        {
+            "target": "varys",
+            "endpoint": "http://app-sombreroblanco-api-prod-002.azurewebsites.net/api/Client/GetClients",
+            
+            "selector": "jsonpath:$.[Nombre]"
+        }
+    ],
+    "execution": {
+        "Node10": {
+            "target": "index.js"
+        }
+    }
+}
+

@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "Medussa",
+    "name": "Medusa SWO",
+    "version": "3.0.49",
+    "publisher": "DanielVargasRomero",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool for Scan Website",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/vss-icon.png"        
+    },
+    "content":{
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "files": [
+        {
+            "path": "buildandreleasetask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildandreleasetask"
+            }
+        }
+    ]
+}
